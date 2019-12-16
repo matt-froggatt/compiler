@@ -1,6 +1,5 @@
 module Main where
 
-import Lib
+import Control.Parallel
 
-main :: IO ()
-main = someFunc
+main = print "Hello World"
