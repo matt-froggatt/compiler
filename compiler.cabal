@@ -1,0 +1,62 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b7f3da5ab6dce63140cdaee8cb60d80f1fdf9ab7298d0a9c3bf008e8ca632274
+
+name:           compiler
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/matt-froggatt/compiler#readme>
+homepage:       https://github.com/matt-froggatt/compiler#readme
+bug-reports:    https://github.com/matt-froggatt/compiler/issues
+author:         Matthew Froggatt
+maintainer:     mattfr@live.ca
+copyright:      2019 Matthew Froggatt
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/matt-froggatt/compiler
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_compiler
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable compiler-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_compiler
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , compiler
+  default-language: Haskell2010
+
+test-suite compiler-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_compiler
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , compiler
+  default-language: Haskell2010
