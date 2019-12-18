@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 50d8b78533960ac67cd22f090cf102b00a798c808a72acd1e77eba5be8eaa753
+-- hash: 1083bee2fb50e48c557c5d1eb4ccdb9d899e5820e1449cb2d05caa2eddb502e8
 
 name:           compiler
 version:        0.1.0.0
@@ -27,7 +27,8 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Lexer
+      Parser
   other-modules:
       Paths_compiler
   hs-source-dirs:
@@ -47,6 +48,7 @@ executable compiler-exe
       base >=4.7 && <5
     , compiler
     , parallel
+    , text
   default-language: Haskell2010
 
 test-suite compiler-test

@@ -1,5 +1,5 @@
 module Main where
 
-import Control.Parallel
+import Data.Text.IO
 
-main = print "Hello World"
+main = Data.Text.IO.getContents >>= Data.Text.IO.putStr
