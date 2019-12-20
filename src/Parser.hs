@@ -1,2 +1,4 @@
-module Parser where
+module Parser ( parse ) where
+
+parse x = x
 

@@ -1,5 +1,8 @@
 module Main where
 
+import Prelude hiding(lex, getContents, putStr)
 import Data.Text.IO
+import Lexer
+import Parser
 
-main = Data.Text.IO.getContents >>= Data.Text.IO.putStr
+main = (lex getContents) >>= print
