@@ -1,17 +1,14 @@
-module Lexer ( Lexer.lex, Token, Lexeme ) where
+module Lexer ( Lexer.lex, Token ) where
 
 import Prelude
 import Data.Text
 import Data.Text.Internal
 
-data Token = ID deriving (Eq, Enum, Show)
-data Lexeme = Lexeme Token Text deriving (Eq)
+data Type = ID deriving (Eq, Enum, Show) -- TODO need to add new tokens
+data Token = Token Type Text deriving (Eq)
 
-instance Show Lexeme where
-    show (Lexeme tok text) = "(" ++ show tok ++ ", " ++ show text ++ ")"
+-- Formatted print for 
+instance Show Token where
+    show (Token tok text) = "(" ++ show tok ++ ", " ++ show text ++ ")"
 
-lex :: IO Data.Text.Internal.Text -> IO Lexeme
-
-lex x = do
-    y <- x
-    return (Lexeme ID y)
+lex x = x >>= (\y -> return (Token ID y))
