@@ -4,4 +4,7 @@ build:
 run:
 	stack exec compiler-exe
 
-.PHONY: build run
+test:
+	stack test
+
+.PHONY: build run test

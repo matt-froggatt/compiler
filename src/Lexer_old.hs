@@ -1,4 +1,4 @@
-module Lexer ( Lexer.lex, Token ) where
+module Lexer_old ( Lexer_old.lex, Token ) where
 
 import Prelude
 import Data.Text

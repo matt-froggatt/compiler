@@ -1,8 +1,9 @@
 module Main where
 
-import Prelude hiding(lex, getContents, putStr)
-import Data.Text.IO
+import Prelude 
 import Lexer
 import Parser
 
-main = (lex getContents) >>= print
+main = do
+    x <- getContents
+    print (parse (alexScanTokens x))
