@@ -1,0 +1,1 @@
+func hello(thing: Bool, thing2: Int) { thing cat_in_the_hat(thing1, thing2) }

@@ -15,6 +15,7 @@ tokens :-
   "true"				{ \s -> TokTrue }
   "val"					{ \s -> Val }
   "var"					{ \s -> Var }
+  "func"				{ \s -> Func }
   "("					{ \s -> LParen }
   ")"					{ \s -> RParen }
   "{"					{ \s -> LBracket }
@@ -35,6 +36,7 @@ data Token =
     TokFalse	|
     Val		|
     Var		|
+    Func	|
     LParen	|
     RParen	|
     LBracket	|
