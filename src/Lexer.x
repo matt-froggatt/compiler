@@ -11,7 +11,6 @@ tokens :-
 
   $white+				;
   "//".*				;
-  "asm"					{ \s -> Asm }
   "false"				{ \s -> TokFalse }
   "true"				{ \s -> TokTrue }
   "val"					{ \s -> Val }
@@ -23,7 +22,7 @@ tokens :-
   "="					{ \s -> Eq }
   ":"					{ \s -> Colon }
   ","					{ \s -> Comma }
-  $digit+				{ \s -> Int (read s) }
+  $digit+				{ \s -> TInt (read s) }
   $alpha [$alpha $digit \_ \']*		{ \s -> ID s }
 
 {
@@ -31,7 +30,6 @@ tokens :-
 
 -- The token type:
 data Token =
-    Asm 	|
     Return  	|
     TokTrue	|
     TokFalse	|
@@ -45,7 +43,7 @@ data Token =
     Colon	|
     Comma	|
     ID String	|
-    Int Int
+    TInt Int
     deriving (Eq,Show)
 
 }
