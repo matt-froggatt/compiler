@@ -3,7 +3,8 @@ module Main where
 import Prelude 
 import Lexer
 import Parser
+import Interpreter
 
 main = do
     x <- getContents
-    print (parse (alexScanTokens x))
+    interpret(parse (alexScanTokens x))

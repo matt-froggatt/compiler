@@ -1,2 +1,3 @@
- - fix parsing logic error
  - add string literal token
+ - figure out if statement for interpretation
+ - implement LLVM

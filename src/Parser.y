@@ -1,5 +1,5 @@
 {
-module Parser ( parse ) where
+module Parser ( ID (..), DataType (..), Param (..), ValType (..), Expr (..), parse ) where
 import qualified Lexer as L
 }
 
