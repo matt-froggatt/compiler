@@ -33,34 +33,40 @@ Expr : Func							{ $1 }
      | FuncDecl							{ $1 }
      | Decl							{ $1 }
 
-Func : id '(' Ids ')' 						{ Func $1 $3 }
-     | id '(' ')'						{ Func $1 [] }
+Func : ID '(' Datum ')'						{ Function $1 $3 }
+     | ID '(' ')'						{ Function $1 [] }
 
-FuncDecl : func id '(' Params ')' ValType '{' Exprs '}'		{ FuncDecl $2 $4 $6 $8 }
-	 | func id '(' ')' ValType '{' Exprs '}'		{ FuncDecl $2 [] $5 $7 }
+FuncDecl : func ID '(' Params ')' DeclType '{' Exprs '}'	{ FunctionDecl $2 $4 $6 $8 }
+	 | func ID '(' ')' ValType '{' Exprs '}'		{ FunctionDecl $2 [] $5 $7 }
 
 
 
 Params : Params ',' Param					{ $3 : $1 }
        | Param							{ [$1] }
 
-Param : id ValType						{ Param $1 $2 }
+Param : ID ValType						{ Param $1 $2 }
 
-Decl : var id ValType						{ Var $2 $3 }
-     | val id ValType						{ Val $2 $3 }
+Decl : var ID ValType						{ Var $2 $3 }
+    | val ID ValType						{ Val $2 $3 }
 
-ValType : '=' id						{ Value $2 }
-	| ':' id						{ Type $2 }
+ValType : '=' Data						{ Value $2 }
+	| DeclType						{ $1 }
 
-Ids : Ids ',' id						{ $3 : $1 }
-    | id							{ [$1] }
+DeclType : ':' ID						{ Type $2 }
 
+Datum : Datum ',' Data						{ $3 : $1 }
+      | Data							{ [$1] }
 
+Data : ID { VarName $1 } | int { IntLit $1 }
+
+ID : id	{ ID $1 }
 
 {
 parseError toks = error "Oh no"
 
-data Param = Param String ValType deriving(Show)
-data ValType = Type String | Value String deriving(Show)
-data Expr = Val String ValType | Var String ValType | Func String [String] | FuncDecl String [Param] ValType [Expr] deriving(Show)
+data ID = ID String deriving(Show)
+data Param = Param ID ValType deriving(Show)
+data DataType = VarName ID | IntLit Int deriving(Show)
+data ValType = Type ID | Value DataType deriving(Show)
+data Expr = Val ID ValType | Var ID ValType | Function ID [DataType] | FunctionDecl ID [Param] ValType [Expr] deriving(Show)
 }

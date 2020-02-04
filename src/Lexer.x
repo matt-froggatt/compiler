@@ -25,27 +25,27 @@ tokens :-
   ","					{ \s -> Comma }
   $digit+				{ \s -> TInt (read s) }
   $alpha [$alpha $digit \_ \']*		{ \s -> ID s }
-
 {
 -- Each action has type :: String -> Token
 
 -- The token type:
 data Token =
-    Return  	|
-    TokTrue	|
-    TokFalse	|
-    Val		|
-    Var		|
-    Func	|
-    LParen	|
-    RParen	|
-    LBracket	|
-    RBracket	|
-    Eq		|
-    Colon	|
-    Comma	|
-    ID String	|
-    TInt Int
+    Return  		|
+    TokTrue		|
+    TokFalse		|
+    Val			|
+    Var			|
+    Func		|
+    LParen		|
+    RParen		|
+    LBracket		|
+    RBracket		|
+    Eq			|
+    Colon		|
+    Comma		|
+    ID String		|
+    TString String	|
+    TInt Int	
     deriving (Eq,Show)
 
 }

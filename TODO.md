@@ -1,0 +1,2 @@
+ - fix parsing logic error
+ - add string literal token
