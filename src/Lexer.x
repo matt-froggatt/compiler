@@ -11,17 +11,17 @@ tokens :-
 
   $white+				;
   "//".*				;
-  "false"				{ \s -> TokFalse }
-  "true"				{ \s -> TokTrue }
-  "val"					{ \s -> Val }
-  "var"					{ \s -> Var }
-  "func"				{ \s -> Func }
+--  "false"				{ \s -> TokFalse }
+--  "true"				{ \s -> TokTrue }
+--  "val"					{ \s -> Val }
+--  "var"					{ \s -> Var }
+--  "func"				{ \s -> Func }
   "("					{ \s -> LParen }
   ")"					{ \s -> RParen }
-  "{"					{ \s -> LBracket }
-  "}"					{ \s -> RBracket }
-  "="					{ \s -> Eq }
-  ":"					{ \s -> Colon }
+--  "{"					{ \s -> LBracket }
+--  "}"					{ \s -> RBracket }
+--  "="					{ \s -> Eq }
+--  ":"					{ \s -> Colon }
   ","					{ \s -> Comma }
   $digit+				{ \s -> TInt (read s) }
   $alpha [$alpha $digit \_ \']*		{ \s -> ID s }
